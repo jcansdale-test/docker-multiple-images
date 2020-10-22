@@ -1,0 +1,22 @@
+on:
+  push:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        name: [1, 2, 3, 4]
+
+    runs-on: ubuntu-latest
+
+    env:
+      IMAGE: docker.pkg.github.com/${{ github.repository }}/${{ matrix.name }}:latest
+
+    steps:
+      - run: docker pull alpine
+
+      - run: docker tag alpine ${{ env.IMAGE }}
+
+      - run: docker login https://docker.pkg.github.com -u token -p ${{ github.token }}
+
+      - run: docker push ${{ env.IMAGE }}
