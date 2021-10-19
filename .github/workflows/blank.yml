@@ -21,3 +21,7 @@ jobs:
 
       - run: docker push ${{ env.IMAGE }}
 
+      - run: docker image rm ${{ env.IMAGE }}
+
+      - run: docker pull ${{ env.IMAGE }}
+
