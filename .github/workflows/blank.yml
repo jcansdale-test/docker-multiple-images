@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      IMAGE: docker.pkg.github.com/${{ github.repository }}/_${{ matrix.name }}:latest
+      IMAGE: docker.pkg.github.com/${{ github.repository }}/a${{ matrix.name }}:latest
 
     steps:
       - run: docker pull alpine
